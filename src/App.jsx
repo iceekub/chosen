@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Sparkles, Sprout } from 'lucide-react';
 
 /**
@@ -11,20 +11,9 @@ import { Sparkles, Sprout } from 'lucide-react';
 
 const App = () => {
   const canvasRef = useRef(null);
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
   
   // Use useRef for mouse position to avoid re-renders on every pixel move
   const mouse = useRef({ x: -1000, y: -1000 });
-
-  // Handle Waitlist Submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      // Logic to send email to backend would go here
-    }
-  };
 
   // Canvas Animation Logic
   useEffect(() => {
@@ -198,38 +187,14 @@ const App = () => {
           A sanctuary for modern devotion. Keep your congregation connected to your teachings and Scripture all week long.
         </p>
 
-        {/* Input/CTA Form */}
-        <div className="w-full max-w-md">
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="group relative flex items-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur transition-all opacity-0 group-hover:opacity-100 duration-500"></div>
-              
-              <div className="relative w-full flex items-center bg-white/5 border border-white/10 rounded-full p-1.5 backdrop-blur-xl transition-colors focus-within:bg-white/10 focus-within:border-white/20">
-                <input 
-                  type="email" 
-                  placeholder="name@email.com" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-transparent px-6 py-3 text-white placeholder-emerald-200/30 outline-none text-base font-light w-full"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  className="px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-medium transition-all flex items-center justify-center group-focus-within:shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)] whitespace-nowrap"
-                >
-                  <span>Join the Waitlist</span>
-                </button>
-              </div>
-            </form>
-          ) : (
-            <div className="animate-fade-in p-4 rounded-xl bg-emerald-900/20 border border-emerald-500/20 text-emerald-100 backdrop-blur-md">
-              <p className="font-serif italic text-lg">"The seed is sown."</p>
-              <p className="text-sm text-emerald-400/70 mt-1">We will notify you when the gates open.</p>
-            </div>
-          )}
-          <p className="mt-4 text-xs text-emerald-200/30">
-            Limited early access spots available.
-          </p>
+        {/* Action Button */}
+        <div className="w-full max-w-md flex justify-center">
+          <a 
+            href="mailto:hello@chosenapp.com"
+            className="group relative px-10 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-md text-emerald-100/90 hover:text-white font-light text-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)]"
+          >
+            <span>Get in touch</span>
+          </a>
         </div>
       </main>
 
