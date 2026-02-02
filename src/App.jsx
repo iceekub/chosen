@@ -25,7 +25,14 @@ const App = () => {
     let height = window.innerHeight;
 
     // Configuration for the "Garden" blobs
-    const colors = ['#064e3b', '#065f46', '#10b981', '#34d399', '#facc15']; 
+    // Darkened Palette: Shifted everything down a shade level for deeper mystery
+    const colors = [
+      '#022c22', // Was #064e3b (Emerald 900 -> 950)
+      '#064e3b', // Was #065f46 (Emerald 800 -> 900)
+      '#047857', // Was #10b981 (Emerald 500 -> 700)
+      '#059669', // Was #34d399 (Emerald 400 -> 600)
+      '#d97706'  // Was #facc15 (Yellow 400 -> Amber 600)
+    ]; 
     
     // Create random floating blobs ONCE on mount
     const blobs = Array.from({ length: 6 }).map(() => ({
@@ -56,8 +63,8 @@ const App = () => {
     };
 
     const render = () => {
-      // Clear with deep void green
-      ctx.fillStyle = '#022c22'; 
+      // Clear with deeper void green (Darker than #022c22)
+      ctx.fillStyle = '#011510'; 
       ctx.fillRect(0, 0, width, height);
 
       // Update and Draw Floating Blobs
@@ -79,7 +86,7 @@ const App = () => {
         // Draw
         const gradient = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, blob.radius);
         gradient.addColorStop(0, blob.color);
-        gradient.addColorStop(1, 'rgba(2, 44, 34, 0)'); // Fade to bg
+        gradient.addColorStop(1, 'rgba(1, 21, 16, 0)'); // Fade to new dark bg
 
         ctx.beginPath();
         ctx.fillStyle = gradient;
@@ -96,7 +103,8 @@ const App = () => {
       }
 
       const mouseGradient = ctx.createRadialGradient(mouseBlob.x, mouseBlob.y, 0, mouseBlob.x, mouseBlob.y, mouseBlob.radius);
-      mouseGradient.addColorStop(0, 'rgba(190, 242, 100, 0.3)'); // Lowered opacity slightly for subtlety
+      // Slightly reduced opacity from 0.3 to 0.25 to match darker theme
+      mouseGradient.addColorStop(0, 'rgba(190, 242, 100, 0.25)'); 
       mouseGradient.addColorStop(1, 'rgba(0,0,0,0)');
 
       ctx.globalCompositeOperation = 'screen'; // Blend mode for "Light" effect
@@ -126,7 +134,7 @@ const App = () => {
 
   return (
     <div 
-      className="relative w-full h-screen overflow-hidden bg-slate-950 font-sans text-white"
+      className="relative w-full h-[100svh] overflow-hidden bg-slate-950 font-sans text-white"
       onMouseMove={handleMouseMove}
     >
       {/* 1. Global Styles for Fonts */}
