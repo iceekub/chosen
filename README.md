@@ -21,12 +21,17 @@ Build for production:
 npm run build
 ```
 
-Deploy to GitHub Pages:
-```bash
-npm run deploy
-```
+## GitHub Pages Deployment
 
-This will automatically build the project and push the `dist` folder to the `gh-pages` branch.
+The project automatically deploys to GitHub Pages via GitHub Actions. Simply push to the `main` branch and the workflow will:
+
+1. Install dependencies
+2. Build the project
+3. Deploy the `dist` folder to GitHub Pages
+
+Your site will be live at `https://iceekub.github.io/chosen`
+
+**Note:** Ensure GitHub Pages is configured in repository settings to deploy from the `gh-pages` branch (the workflow creates this automatically).
 
 ## Requirements
 
