@@ -2,17 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+    /* Trial Theme: Forest Sanctuary (Lighter) */
+    --brand-bg: #05241e; /* Was #031410 */
+    --brand-canvas: #062d25; /* Was #041c16 */
+
+    /* To revert, simply swap the values above back to:
+     --brand-bg: #031410;
+     --brand-canvas: #041c16;
+  */
 }
 
-html, body, #root {
-  width: 100%;
-  height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+    font-family:
+        "Mulish",
+        system-ui,
+        -apple-system,
+        sans-serif;
 }
